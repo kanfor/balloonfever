@@ -46,6 +46,22 @@
                         <action id="0" name="Set text" sid="1358067840227193" type="SpriteFont">
                             <param id="0" name="Text">&quot;Balloons: &quot;&amp;Ballons</param>
                         </action>
+                        <action id="-3" name="Set position" sid="7797516031522427" type="SpriteFont">
+                            <param id="0" name="X">21</param>
+                            <param id="1" name="Y">15</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="6345855668559174" type="GameOver">
+                            <param id="0" name="Y">-100</param>
+                        </action>
+                        <action behavior="Flash" id="0" name="Flash" sid="532613441609605" type="SpriteFont">
+                            <param id="0" name="&apos;On&apos; time">0.1</param>
+                            <param id="1" name="&apos;Off&apos; time">0.1</param>
+                            <param id="2" name="Duration">1.0</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="9395116558403212" type="SpriteFont">
+                            <param id="0" name="Instance variable">ParpadeoFinal</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="2522054883676202">
@@ -386,6 +402,14 @@
                                         <action id="-9" name="Destroy" sid="7063314488797856" type="Sprite" />
                                     </actions>
                                 </event-block>
+                                <event-block sid="7400711271990265">
+                                    <conditions>
+                                        <condition id="-1" name="Every tick" sid="270866929653312" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Move to top" sid="607328973872591" type="SpriteFont" />
+                                    </actions>
+                                </event-block>
                             </sub-events>
                         </event-group>
                         <event-group description="Los controles de Iwata, comportamientos" sid="6408558662736031" title="IWATA">
@@ -590,7 +614,7 @@
                                                     <param id="0" name="Audio file">caer</param>
                                                     <param id="2" name="Loop">0</param>
                                                     <param id="3" name="Volume">0</param>
-                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                    <param id="1" name="Tag (optional)">&quot;caer&quot;</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -608,6 +632,79 @@
                                         </action>
                                         <action id="-2" name="Set Y" sid="7614274560856471" type="GameOver">
                                             <param id="0" name="Y">100</param>
+                                        </action>
+                                        <action id="-24" name="Move to top" sid="9674557988266564" type="GameOver" />
+                                        <action id="-3" name="Set position" sid="7919863871535477" type="SpriteFont">
+                                            <param id="0" name="X">135</param>
+                                            <param id="1" name="Y">125</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="7693453329167418" type="SpriteFont">
+                                            <param id="0" name="Text">&quot;Total balloons: &quot;&amp;Ballons</param>
+                                        </action>
+                                        <action id="-24" name="Move to top" sid="359514127587576" type="SpriteFont" />
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="5517811721385486">
+                                            <conditions>
+                                                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="1557255780394308" type="SpriteFont" />
+                                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3706256155111699" type="SpriteFont">
+                                                    <param id="0" name="Instance variable">ParpadeoFinal</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Flash" id="0" name="Flash" sid="9166317917242924" type="SpriteFont">
+                                                    <param id="0" name="&apos;On&apos; time">0.05</param>
+                                                    <param id="1" name="&apos;Off&apos; time">0.05</param>
+                                                    <param id="2" name="Duration">1</param>
+                                                </action>
+                                                <action id="-13" name="Set boolean" sid="196478279550924" type="SpriteFont">
+                                                    <param id="0" name="Instance variable">ParpadeoFinal</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="0" name="Play" sid="93629594139956" type="Audio">
+                                                    <param id="0" name="Audio file">gameover</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                </action>
+                                                <action id="-3" name="Create object" sid="4039439125989945" type="System">
+                                                    <param id="0" name="Object to create">Agua</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">352</param>
+                                                    <param id="3" name="Y">240</param>
+                                                </action>
+                                                <action id="-29" name="Move to object" sid="149319724282486" type="Agua">
+                                                    <param id="0" name="Where">1</param>
+                                                    <param id="1" name="Object">TiledBackground2</param>
+                                                </action>
+                                                <action behavior="Physics" id="12" name="Set world gravity" sid="1287134341626257" type="Agua">
+                                                    <param id="0" name="Gravity">10</param>
+                                                </action>
+                                                <action behavior="Physics" id="2" name="Apply force at angle" sid="8343383805133137" type="Agua">
+                                                    <param id="0" name="Force">-3.5</param>
+                                                    <param id="1" name="Angle">90</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="5295122212189473">
+                                    <conditions>
+                                        <condition id="0" name="On click" sid="4860110418428443" type="Mouse">
+                                            <param id="0" name="Mouse button">0</param>
+                                            <param id="1" name="Click type">0</param>
+                                        </condition>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="50014606961957" type="Iwata">
+                                            <param id="0" name="Instance variable">BajoElAgua</param>
+                                        </condition>
+                                        <condition id="5" inverted="1" name="Is tag playing" sid="1243289008660588" type="Audio">
+                                            <param id="0" name="Tag">&quot;caer&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-2" name="Go to layout" sid="6658239453880708" type="System">
+                                            <param id="0" name="Layout">Menu</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -735,6 +832,30 @@
                                             <param id="0" name="Text">&quot;Balloons: &quot;&amp;Ballons</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="1980239515360429">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="4913064932260985" type="System">
+                                                    <param id="0" name="First value">Ballons % 10</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Flash" id="0" name="Flash" sid="9270926068758577" type="SpriteFont">
+                                                    <param id="0" name="&apos;On&apos; time">0.1</param>
+                                                    <param id="1" name="&apos;Off&apos; time">0.1</param>
+                                                    <param id="2" name="Duration">1.0</param>
+                                                </action>
+                                                <action id="0" name="Play" sid="3915959168984563" type="Audio">
+                                                    <param id="0" name="Audio file">10</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="1619418554397462">
                                     <conditions>

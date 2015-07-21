@@ -19,6 +19,7 @@
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
         <behavior author="Scirra" id="Physics" version="1">Physics</behavior>
         <behavior author="Scirra" id="Timer" version="1">Timer</behavior>
     </used-behaviors>
@@ -37,15 +38,15 @@
         <prop name="Clear background">Yes</prop>
         <prop name="Downscaling">Medium quality</prop>
         <prop name="Enable WebGL">On</prop>
-        <prop name="Fullscreen in browser">Letterbox scale</prop>
-        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Fullscreen in browser">Letterbox integer scale</prop>
+        <prop name="Fullscreen scaling">Low quality</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
         <prop name="Orientations">Any</prop>
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
         <prop name="Preload sounds">Yes</prop>
         <prop name="Preview browser">(default)</prop>
-        <prop name="Sampling">Linear</prop>
+        <prop name="Sampling">Point</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
     <object-folder>
@@ -361,6 +362,14 @@
         </object-type>
         <object-type name="SpriteFont" sid="8284234067581256">
             <plugin id="Spritefont2" />
+            <instance-variables>
+                <instance-variable name="ParpadeoFinal" sid="5000072066577506" type="boolean" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Flash" sid="4305452351578937">
+                    <behavior id="Flash" />
+                </behavior-type>
+            </behaviors>
             <texture original-source="C:\HTML5\Ballon Fever\brutos\fonts.png" />
         </object-type>
         <object-type name="Audio" sid="5346058905164326">
@@ -378,6 +387,137 @@
                             <point x="0.958904" y="0.888889" />
                             <point x="0.0410959" y="0.888889" />
                             <point x="0.0136986" y="0.555556" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite2" sid="5286319080270181">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="6" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1589955018439981" speed="5">
+                    <frame duration="1" hotspotX="0.357143" hotspotY="0.2" original-source="C:\HTML5\Ballon Fever\brutos\frames\globeB1.png">
+                        <collision-poly>
+                            <point x="0.142857" y="0.16" />
+                            <point x="0.5" y="0.04" />
+                            <point x="0.857143" y="0.16" />
+                            <point x="0.642857" y="0.52" />
+                            <point x="0.5" y="0.68" />
+                            <point x="0.5" y="0.56" />
+                            <point x="0.428571" y="0.72" />
+                            <point x="0.357143" y="0.52" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.357143" hotspotY="0.2" original-source="C:\HTML5\Ballon Fever\brutos\frames\globeB2.png">
+                        <collision-poly>
+                            <point x="0.142857" y="0.2" />
+                            <point x="0.428571" y="0.04" />
+                            <point x="0.857143" y="0.16" />
+                            <point x="0.642857" y="0.52" />
+                            <point x="0.5" y="0.68" />
+                            <point x="0.428571" y="0.72" />
+                            <point x="0.428571" y="0.68" />
+                            <point x="0.357143" y="0.52" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.357143" hotspotY="0.2">
+                        <collision-poly>
+                            <point x="0.142857" y="0.2" />
+                            <point x="0.428571" y="0.04" />
+                            <point x="0.857143" y="0.16" />
+                            <point x="0.642857" y="0.52" />
+                            <point x="0.5" y="0.68" />
+                            <point x="0.428571" y="0.72" />
+                            <point x="0.428571" y="0.68" />
+                            <point x="0.357143" y="0.52" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.357143" hotspotY="0.2">
+                        <collision-poly>
+                            <point x="0.142857" y="0.16" />
+                            <point x="0.5" y="0.04" />
+                            <point x="0.857143" y="0.16" />
+                            <point x="0.642857" y="0.52" />
+                            <point x="0.5" y="0.68" />
+                            <point x="0.5" y="0.56" />
+                            <point x="0.428571" y="0.72" />
+                            <point x="0.357143" y="0.52" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.352941" hotspotY="0.192308" original-source="C:\HTML5\Ballon Fever\brutos\frames\globeB3.png">
+                        <collision-poly>
+                            <point x="0.235294" y="0.153846" />
+                            <point x="0.470588" y="0.0384615" />
+                            <point x="0.764706" y="0.153846" />
+                            <point x="0.588235" y="0.5" />
+                            <point x="0.470588" y="0.653846" />
+                            <point x="0.470588" y="0.807692" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.352941" hotspotY="0.192308">
+                        <collision-poly>
+                            <point x="0.235294" y="0.153846" />
+                            <point x="0.470588" y="0.0384615" />
+                            <point x="0.764706" y="0.153846" />
+                            <point x="0.588235" y="0.5" />
+                            <point x="0.470588" y="0.653846" />
+                            <point x="0.470588" y="0.807692" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Agua" sid="4917879245001009">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Physics" sid="1108232969530725">
+                    <behavior id="Physics" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="4" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7688730175596087" speed="4">
+                    <frame duration="1" hotspotX="0.4" hotspotY="0.9" original-source="C:\HTML5\Ballon Fever\brutos\frames\agua1.png">
+                        <collision-poly>
+                            <point x="0.3" y="0.2" />
+                            <point x="0.4" y="0.3" />
+                            <point x="0.7" y="0.1" />
+                            <point x="0.7" y="0.9" />
+                            <point x="0.4" y="0.7" />
+                            <point x="0.2" y="0.9" />
+                            <point x="0.3" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.928571" original-source="C:\HTML5\Ballon Fever\brutos\frames\agua2.png">
+                        <collision-poly>
+                            <point x="0.3" y="0.0714286" />
+                            <point x="0.5" y="0.142857" />
+                            <point x="0.7" y="0.0714286" />
+                            <point x="0.7" y="0.857143" />
+                            <point x="0.5" y="0.928571" />
+                            <point x="0.3" y="0.857143" />
+                            <point x="0.2" y="0.428571" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.538462" hotspotY="0.9375" original-source="C:\HTML5\Ballon Fever\brutos\frames\agua3.png">
+                        <collision-poly>
+                            <point x="0.538462" y="0.3125" />
+                            <point x="0.461538" y="0.3125" />
+                            <point x="0.769231" y="0.0625" />
+                            <point x="0.923077" y="0.5" />
+                            <point x="0.615385" y="0.875" />
+                            <point x="0.461538" y="0.9375" />
+                            <point x="0.461538" y="0.8125" />
+                            <point x="0.307692" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.555556" hotspotY="0.916667" original-source="C:\HTML5\Ballon Fever\brutos\frames\agua4.png">
+                        <collision-poly>
+                            <point x="0.666667" y="0.583333" />
+                            <point x="0.555556" y="0.25" />
+                            <point x="0.777778" y="0.166667" />
+                            <point x="0.666667" y="0.75" />
+                            <point x="0.555556" y="0.333333" />
+                            <point x="0.722222" y="0.416667" />
                         </collision-poly>
                     </frame>
                 </animation>
@@ -422,6 +562,10 @@
         <file name="volar2.ogg" />
         <file name="cancion.m4a" />
         <file name="cancion.ogg" />
+        <file name="gameover.m4a" />
+        <file name="gameover.ogg" />
+        <file name="10.m4a" />
+        <file name="10.ogg" />
     </sounds-folder>
     <music-folder />
     <files-folder>

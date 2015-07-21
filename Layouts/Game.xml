@@ -414,13 +414,19 @@
                         <character-spacing>0</character-spacing>
                         <line-height>0</line-height>
                     </properties>
+                    <instance-variables>
+                        <ParpadeoFinal>false</ParpadeoFinal>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="Flash" />
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>8.98009491</x>
-                        <y>10.184104919</y>
+                        <x>135.98664856</x>
+                        <y>125.336517334</y>
                         <z>0</z>
-                        <width>121.486717224</width>
+                        <width>199.384307861</width>
                         <height>13.578796387</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
@@ -439,14 +445,52 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>193.942367554</x>
-                        <y>-14.363121033</y>
+                        <x>200</x>
+                        <y>100</y>
                         <z>0</z>
                         <width>73</width>
                         <height>9</height>
                         <depth>0</depth>
                         <hotspotX>0.506849289</hotspotX>
                         <hotspotY>0.666666687</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Agua" uid="22">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Physics">
+                            <properties>
+                                <immovable>No</immovable>
+                                <collision-mask>Use collision polygon</collision-mask>
+                                <prevent-rotation>No</prevent-rotation>
+                                <density>1</density>
+                                <friction>0.5</friction>
+                                <elasticity>0.2</elasticity>
+                                <linear-damping>0</linear-damping>
+                                <angular-damping>0.01</angular-damping>
+                                <bullet>No</bullet>
+                                <initial-state>Enabled</initial-state>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>384.582946777</x>
+                        <y>261.118713379</y>
+                        <z>0</z>
+                        <width>10</width>
+                        <height>10</height>
+                        <depth>0</depth>
+                        <hotspotX>0.400000006</hotspotX>
+                        <hotspotY>0.899999976</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
