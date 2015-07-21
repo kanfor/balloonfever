@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GameSheet</name>
+    <events>
+        <variable constant="0" name="Ballons" sid="7463007178689285" static="0" type="number">0</variable>
+        <variable comment="Obstáculo en zona 1" constant="0" name="Enem1" sid="1126165189723014" static="0" type="number">0</variable>
+        <variable comment="Obstáculo en zona 2" constant="0" name="Enem2" sid="5906794490891473" static="0" type="number">0</variable>
+        <variable comment="Obstáculo en zona 3" constant="0" name="Enem3" sid="2755817852787133" static="0" type="number">0</variable>
+        <variable comment="Obstáculo en zona 4" constant="0" name="Enem4" sid="8997896792722532" static="0" type="number">0</variable>
+        <variable comment="Contador para crear nuevos obstáculos" constant="0" name="ContadorEspacioRecorrido" sid="4795989441127512" static="0" type="number">0</variable>
+        <variable comment="El juego no se ha iniciado" constant="0" name="JuegoIniciado" sid="4855784434618966" static="0" type="number">0</variable>
+        <variable comment="La velocudad del juego" constant="0" name="VelocidadJuego" sid="7961276619658559" static="0" type="number">0.5</variable>
+        <comment>El juego está pausado esperando que pulsemos una tecla</comment>
+        <event-group description="Inicializamos variables del juego" sid="842555548670938" title="INICIO DEL JUEGO">
+            <sub-events>
+                <event-block sid="1189689120941266">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="7604335583867544" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="3119372251404775" type="System">
+                            <param id="0" name="Variable">JuegoIniciado</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="2182308593279109" type="System">
+                            <param id="0" name="Variable">VelocidadJuego</param>
+                            <param id="1" name="Value">0.5</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="6998098908315356" type="Iwata">
+                            <param id="0" name="Instance variable">Vivo</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="2207946953700362" type="Iwata">
+                            <param id="0" name="Instance variable">BajoElAgua</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="2500117737994428" type="Iwata">
+                            <param id="0" name="Instance variable">FuerzaAplicada</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="8986855081775054" type="System">
+                            <param id="0" name="Variable">Ballons</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="1358067840227193" type="SpriteFont">
+                            <param id="0" name="Text">&quot;Balloons: &quot;&amp;Ballons</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2522054883676202">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="6891779019552044" type="System">
+                            <param id="0" name="Variable">JuegoIniciado</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6813543155575173">
+                            <conditions>
+                                <condition id="-2" name="On start of layout" sid="2147848154434982" type="System" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Physics" id="12" name="Set world gravity" sid="4976705843358599" type="Iwata">
+                                    <param id="0" name="Gravity">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8010374641223031">
+                            <conditions>
+                                <condition id="1" name="On any click" sid="8818273238560361" type="Mouse" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="1141434844283309" type="System">
+                                    <param id="0" name="Variable">JuegoIniciado</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action behavior="Physics" id="12" name="Set world gravity" sid="3985670429389434" type="Iwata">
+                                    <param id="0" name="Gravity">1.5</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment>El juego se ha iniciado y comienza la lógica</comment>
+        <event-group description="" sid="6150517714964671" title="JUEGO">
+            <sub-events>
+                <event-block sid="6837959604760138">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5885772881812184" type="System">
+                            <param id="0" name="Variable">JuegoIniciado</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-group description="Control random de la aparición de nuevos obstáculos" sid="220954872078246" title="Spins y globos">
+                            <sub-events>
+                                <event-block sid="1206833931384494">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="4626365813176014" type="System">
+                                            <param id="0" name="Variable">ContadorEspacioRecorrido</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0.5</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="4037040284338041" type="System">
+                                            <param id="0" name="Variable">ContadorEspacioRecorrido</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="2125831874392452" type="System">
+                                            <param id="0" name="Variable">Enem1</param>
+                                            <param id="1" name="Value">Round(random(5))</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="3408637232301424" type="System">
+                                            <param id="0" name="Variable">Enem2</param>
+                                            <param id="1" name="Value">Round(random(5))</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="9825470623943666" type="System">
+                                            <param id="0" name="Variable">Enem3</param>
+                                            <param id="1" name="Value">Round(random(5))</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8403114135053488" type="System">
+                                            <param id="0" name="Variable">Enem4</param>
+                                            <param id="1" name="Value">Round(random(5))</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="9766856024269601">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="3513562783804123" type="System">
+                                                    <param id="0" name="Variable">Enem1</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="7304948218315901" type="System">
+                                                    <param id="0" name="Object to create">Spin</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48))</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="644432242961469" type="System">
+                                                    <param id="0" name="Variable">Enem1</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="2691402337525252">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="7253193460850616" type="System">
+                                                    <param id="0" name="Variable">Enem1</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="7610745688220502" type="System">
+                                                    <param id="0" name="Object to create">Globe</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48))</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="3326876308960333" type="System">
+                                                    <param id="0" name="Variable">Enem1</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="4254086320407388">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="8261443596206785" type="System">
+                                                    <param id="0" name="Variable">Enem2</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="7968161631615139" type="System">
+                                                    <param id="0" name="Object to create">Spin</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48)) + 48</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="6064083073929963" type="System">
+                                                    <param id="0" name="Variable">Enem2</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="4434918062772976">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="1149155934776849" type="System">
+                                                    <param id="0" name="Variable">Enem2</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="2370800589741651" type="System">
+                                                    <param id="0" name="Object to create">Globe</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48)) + 48</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="7102814189576557" type="System">
+                                                    <param id="0" name="Variable">Enem2</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="5585036106489838">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="6538824231479404" type="System">
+                                                    <param id="0" name="Variable">Enem3</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="8936331977758578" type="System">
+                                                    <param id="0" name="Object to create">Spin</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48)) + 96</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="249192919983063" type="System">
+                                                    <param id="0" name="Variable">Enem3</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="3699970099403646">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="273332041298971" type="System">
+                                                    <param id="0" name="Variable">Enem3</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="9568786826915217" type="System">
+                                                    <param id="0" name="Object to create">Globe</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48)) + 96</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="5369352199206229" type="System">
+                                                    <param id="0" name="Variable">Enem3</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="4746112741867119">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="2328937360462273" type="System">
+                                                    <param id="0" name="Variable">Enem4</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="9533836569479055" type="System">
+                                                    <param id="0" name="Object to create">Spin</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48)) + 144</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="8655566520910926" type="System">
+                                                    <param id="0" name="Variable">Enem4</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="4768624784436313">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="7364184236092862" type="System">
+                                                    <param id="0" name="Variable">Enem4</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="1345895176568999" type="System">
+                                                    <param id="0" name="Object to create">Globe</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">-round(random(50))</param>
+                                                    <param id="3" name="Y">round(random(48)) + 144</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="6682644731632833" type="System">
+                                                    <param id="0" name="Variable">Enem4</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="Comportamiento del scroll de fondo" sid="1574389175572737" title="FONDO">
+                            <sub-events>
+                                <event-block sid="5827078431995556">
+                                    <conditions>
+                                        <condition id="-6" name="Every X seconds" sid="9272319246934461" type="System">
+                                            <param id="0" name="Interval (seconds)">0.01</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-23" name="Move at angle" sid="1927568194800033" type="TiledBackground">
+                                            <param id="0" name="Angle">0</param>
+                                            <param id="1" name="Distance">VelocidadJuego / 2</param>
+                                        </action>
+                                        <action id="-11" name="Add to" sid="9627288017398116" type="TiledBackground">
+                                            <param id="0" name="Instance variable">deltaX</param>
+                                            <param id="1" name="Value">VelocidadJuego / 2</param>
+                                        </action>
+                                        <action id="-23" name="Move at angle" sid="2414046440420724" type="TiledBackground2">
+                                            <param id="0" name="Angle">0</param>
+                                            <param id="1" name="Distance">VelocidadJuego / 1.5</param>
+                                        </action>
+                                        <action id="-11" name="Add to" sid="3646960174163197" type="TiledBackground2">
+                                            <param id="0" name="Instance variable">deltaX</param>
+                                            <param id="1" name="Value">VelocidadJuego / 1.5</param>
+                                        </action>
+                                        <action id="-23" name="Move at angle" sid="6812176375075544" type="Sprite">
+                                            <param id="0" name="Angle">0</param>
+                                            <param id="1" name="Distance">VelocidadJuego / 1.5</param>
+                                        </action>
+                                        <action id="-10" name="Add to" sid="5299478665755867" type="System">
+                                            <param id="0" name="Variable">ContadorEspacioRecorrido</param>
+                                            <param id="1" name="Value">VelocidadJuego / 100</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="4184603683719877" type="TextBox">
+                                            <param id="0" name="Text">&quot;&quot;&amp;ContadorEspacioRecorrido</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="7207531547589827">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1619332591493584" type="TiledBackground">
+                                            <param id="0" name="Instance variable">deltaX</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">400</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-1" name="Set X" sid="1867936228488149" type="TiledBackground">
+                                            <param id="0" name="X">TiledBackground.originX</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="5143766545476121" type="TiledBackground">
+                                            <param id="0" name="Instance variable">deltaX</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="8543969071135781">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="4197206925502701" type="TiledBackground2">
+                                            <param id="0" name="Instance variable">deltaX</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">400</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-1" name="Set X" sid="1835956277211506" type="TiledBackground2">
+                                            <param id="0" name="X">TiledBackground.originX</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="5188409081304177" type="TiledBackground2">
+                                            <param id="0" name="Instance variable">deltaX</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="1388479984189779">
+                                    <conditions>
+                                        <condition id="-4" name="Is outside layout" sid="2045088041426636" type="Sprite" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" sid="7063314488797856" type="Sprite" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="Los controles de Iwata, comportamientos" sid="6408558662736031" title="IWATA">
+                            <sub-events>
+                                <comment>Iwata esta vivo</comment>
+                                <event-block sid="8441702843358278">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="6007553028710198" type="Iwata">
+                                            <param id="0" name="Instance variable">Vivo</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="6178400450416288">
+                                            <conditions>
+                                                <condition id="0" name="On click" sid="1513717481537593" type="Mouse">
+                                                    <param id="0" name="Mouse button">0</param>
+                                                    <param id="1" name="Click type">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="0" name="Apply force" sid="7063723060650277" type="Iwata">
+                                                    <param id="0" name="Force X">0</param>
+                                                    <param id="1" name="Force Y">-10</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                                <action behavior="Timer" id="0" name="Start timer" sid="213090113930499" type="Iwata">
+                                                    <param id="0" name="Duration">0.2</param>
+                                                    <param id="1" name="Type">0</param>
+                                                    <param id="2" name="Tag">&quot;FuerzaTiempo&quot;</param>
+                                                </action>
+                                                <action id="-13" name="Set boolean" sid="3146067543138432" type="Iwata">
+                                                    <param id="0" name="Instance variable">FuerzaAplicada</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="4" name="Set animation" sid="3379992058408484" type="Iwata">
+                                                    <param id="0" name="Animation">&quot;FlyUp&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                                <action id="0" name="Play" sid="9474113322437408" type="Audio">
+                                                    <param id="0" name="Audio file">volar2</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="7838694811559717">
+                                            <conditions>
+                                                <condition behavior="Physics" id="1" name="Compare velocity" sid="7936678215320613" type="Iwata">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3312313853991003" type="Iwata">
+                                                    <param id="0" name="Instance variable">FuerzaAplicada</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set animation" sid="4582334162449186" type="Iwata">
+                                                    <param id="0" name="Animation">&quot;FlyDown&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="4573788606289222">
+                                            <conditions>
+                                                <condition behavior="Physics" id="1" name="Compare velocity" sid="4634258745922351" type="Iwata">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set animation" sid="3737970775223083" type="Iwata">
+                                                    <param id="0" name="Animation">&quot;FlyUp&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="4341347296314313">
+                                            <conditions>
+                                                <condition behavior="Timer" id="0" name="On timer" sid="8321953029835971" type="Iwata">
+                                                    <param id="0" name="Tag">&quot;FuerzaTiempo&quot;</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="9919966061829074" type="Iwata">
+                                                    <param id="0" name="Instance variable">FuerzaAplicada</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="6829176664743888">
+                                            <conditions>
+                                                <condition id="-2" name="Compare Y" sid="1801081255594285" type="Iwata">
+                                                    <param id="0" name="Comparison">2</param>
+                                                    <param id="1" name="Y co-ordinate">Iwata.Height</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-2" name="Set Y" sid="5107905652188905" type="Iwata">
+                                                    <param id="0" name="Y">Iwata.Height</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Iwata colisiona con algo que lo mata</comment>
+                                <event-block sid="7082009936135767">
+                                    <conditions>
+                                        <condition id="0" name="On collision with another object" sid="318390977193402" type="Iwata">
+                                            <param id="0" name="Object">Spin</param>
+                                        </condition>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="2573900772478548" type="Iwata">
+                                            <param id="0" name="Instance variable">Vivo</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="972565638514249" type="Iwata">
+                                            <param id="0" name="Animation">&quot;Electro&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                        <action behavior="Timer" id="0" name="Start timer" sid="954220820524186" type="Iwata">
+                                            <param id="0" name="Duration">1.0</param>
+                                            <param id="1" name="Type">0</param>
+                                            <param id="2" name="Tag">&quot;Electro&quot;</param>
+                                        </action>
+                                        <action id="-13" name="Set boolean" sid="3382487646830454" type="Iwata">
+                                            <param id="0" name="Instance variable">Vivo</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action behavior="Physics" id="12" name="Set world gravity" sid="1270521920811224" type="Iwata">
+                                            <param id="0" name="Gravity">0</param>
+                                        </action>
+                                        <action behavior="Physics" id="15" name="Set velocity" sid="2343182333564467" type="Iwata">
+                                            <param id="0" name="X component">0</param>
+                                            <param id="1" name="Y component">0</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="4289007082205319" type="Audio">
+                                            <param id="0" name="Audio file">electro1</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Iwata esta muerto</comment>
+                                <event-block sid="9626769921726237">
+                                    <conditions>
+                                        <condition behavior="Timer" id="0" name="On timer" sid="5171650517498863" type="Iwata">
+                                            <param id="0" name="Tag">&quot;Electro&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="8793653303346465" type="Iwata">
+                                            <param id="0" name="Animation">&quot;DeadFalling&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                        <action behavior="Physics" id="12" name="Set world gravity" sid="7524473929714413" type="Iwata">
+                                            <param id="0" name="Gravity">10</param>
+                                        </action>
+                                        <action behavior="Physics" id="0" name="Apply force" sid="9022201090602867" type="Iwata">
+                                            <param id="0" name="Force X">0</param>
+                                            <param id="1" name="Force Y">-20</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="9702408964454666" type="Audio">
+                                            <param id="0" name="Audio file">caer</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5713155322878524">
+                                    <conditions>
+                                        <condition id="-2" name="Compare Y" sid="5732321870405972" type="Iwata">
+                                            <param id="0" name="Comparison">5</param>
+                                            <param id="1" name="Y co-ordinate">240</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-13" name="Set boolean" sid="1565559250194769" type="Iwata">
+                                            <param id="0" name="Instance variable">BajoElAgua</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="8763430828607841">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="6235496448555861" type="Iwata">
+                                                    <param id="0" name="Instance variable">Vivo</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="9877698010010626" type="Iwata">
+                                                    <param id="0" name="Instance variable">Vivo</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                                <action id="0" name="Play" sid="1039695255271397" type="Audio">
+                                                    <param id="0" name="Audio file">caer</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="7938192824995617">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="35276097890917" type="Iwata">
+                                            <param id="0" name="Instance variable">BajoElAgua</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-1" name="Set X" sid="1337235532381645" type="GameOver">
+                                            <param id="0" name="X">200</param>
+                                        </action>
+                                        <action id="-2" name="Set Y" sid="7614274560856471" type="GameOver">
+                                            <param id="0" name="Y">100</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="4447108292001627" title="VELOCIDAD">
+                            <sub-events>
+                                <event-block sid="7207245772448796">
+                                    <conditions>
+                                        <condition id="-6" name="Every X seconds" sid="8785211256639663" type="System">
+                                            <param id="0" name="Interval (seconds)">0.1</param>
+                                        </condition>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="7140789944100834" type="Iwata">
+                                            <param id="0" name="Instance variable">Vivo</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="2703044044623344" type="System">
+                                            <param id="0" name="Variable">VelocidadJuego</param>
+                                            <param id="1" name="Value">0.003</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="7652294248548524">
+                                    <conditions>
+                                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5188883627041256" type="Iwata">
+                                            <param id="0" name="Instance variable">Vivo</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="1867565388543843" type="System">
+                                            <param id="0" name="Variable">VelocidadJuego</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="1580303122518934" title="PINCHOS">
+                            <sub-events>
+                                <event-block sid="2173277523520297">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="5929262377593932" type="Spin">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="X co-ordinate">450</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-23" name="Move at angle" sid="4834353665773528" type="Spin">
+                                            <param id="0" name="Angle">0</param>
+                                            <param id="1" name="Distance">VelocidadJuego</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="4628888524280126">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="6247001447168976" type="Spin">
+                                            <param id="0" name="Comparison">5</param>
+                                            <param id="1" name="X co-ordinate">450</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" sid="4848126356810763" type="Spin" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="9153030727642458" title="GLOBOS">
+                            <sub-events>
+                                <event-block sid="6774817911600292">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="8818064936640522" type="Globe">
+                                            <param id="0" name="Comparison">2</param>
+                                            <param id="1" name="X co-ordinate">450</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-23" name="Move at angle" sid="4775886122081389" type="Globe">
+                                            <param id="0" name="Angle">0</param>
+                                            <param id="1" name="Distance">VelocidadJuego</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="6554946389182702">
+                                    <conditions>
+                                        <condition id="-1" name="Compare X" sid="8882876071692739" type="Globe">
+                                            <param id="0" name="Comparison">5</param>
+                                            <param id="1" name="X co-ordinate">450</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" sid="7164347957011311" type="Globe" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3437275697930864">
+                                    <conditions>
+                                        <condition id="0" name="On collision with another object" sid="6784654513019818" type="Globe">
+                                            <param id="0" name="Object">Iwata</param>
+                                        </condition>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="1275384552660223" type="Iwata">
+                                            <param id="0" name="Instance variable">Vivo</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2183444355761034" type="Globe">
+                                            <param id="0" name="Animation">&quot;Explosion&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                        <action behavior="Timer" id="0" name="Start timer" sid="1502959833527482" type="Globe">
+                                            <param id="0" name="Duration">0.25</param>
+                                            <param id="1" name="Type">0</param>
+                                            <param id="2" name="Tag">&quot;Muerto&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="290220190901201" type="Audio">
+                                            <param id="0" name="Audio file">explsion</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-10" name="Add to" sid="1879942437741988" type="System">
+                                            <param id="0" name="Variable">Ballons</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="3945378646438794" type="SpriteFont">
+                                            <param id="0" name="Text">&quot;Balloons: &quot;&amp;Ballons</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="1619418554397462">
+                                    <conditions>
+                                        <condition behavior="Timer" id="0" name="On timer" sid="6602595567175453" type="Globe">
+                                            <param id="0" name="Tag">&quot;Muerto&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" sid="8806769875271669" type="Globe" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
