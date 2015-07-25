@@ -10,13 +10,16 @@
     <unique-id>25448tl41buc5</unique-id>
     <saved-with-version>20600</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="NodeWebkit" version="1">NW.js</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
@@ -31,8 +34,9 @@
         <width>400</width>
         <height>240</height>
     </window-size>
-    <pixel-rounding>1</pixel-rounding>
+    <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
+    <first-layout>Menu</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -370,7 +374,7 @@
                     <behavior id="Flash" />
                 </behavior-type>
             </behaviors>
-            <texture original-source="C:\HTML5\Ballon Fever\brutos\fonts.png" />
+            <texture original-source="C:\HTML5\balloonfever\brutos\fonts.png" />
         </object-type>
         <object-type name="Audio" sid="5346058905164326">
             <plugin id="Audio" />
@@ -523,15 +527,72 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="AJAX" sid="4545071251863053">
+            <plugin id="AJAX" />
+        </object-type>
+        <object-type name="Touch" sid="4177607884163161">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="topscores" sid="304042028932462">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2961788394685072" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.555556" original-source="C:\HTML5\balloonfever\brutos\topscores.png">
+                        <collision-poly>
+                            <point x="0.0375" y="0.555556" />
+                            <point x="0.5" y="0.333333" />
+                            <point x="0.975" y="0.444444" />
+                            <point x="0.9875" y="0.555556" />
+                            <point x="0.9875" y="0.777778" />
+                            <point x="0.0375" y="0.555556" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="congrats" sid="956362552776739">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5654026582404728" speed="5">
+                    <frame duration="1" hotspotX="0.486111" hotspotY="0.595238" original-source="C:\HTML5\balloonfever\brutos\congrats.png">
+                        <collision-poly>
+                            <point x="0.229167" y="0.833333" />
+                            <point x="0.486111" y="0.0238095" />
+                            <point x="0.75" y="0.809524" />
+                            <point x="0.930556" y="0.97619" />
+                            <point x="0.0555556" y="0.928571" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ponernombre" sid="8487826395350133">
+            <plugin id="TextBox" />
+        </object-type>
+        <object-type name="Button" sid="6159457071033497">
+            <plugin id="Button" />
+        </object-type>
+        <object-type name="bestplayer" sid="7557863741005807">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\HTML5\balloonfever\brutos\fonts.png" />
+        </object-type>
+        <object-type name="Puntos" sid="6506272277392038">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\HTML5\balloonfever\brutos\fonts.png" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
         <layout>Menu.xml</layout>
         <layout>Game.xml</layout>
+        <layout>Score.xml</layout>
+        <layout>Putname.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>MenuSheet.xml</event-sheet>
         <event-sheet>GameSheet.xml</event-sheet>
+        <event-sheet>Scores.xml</event-sheet>
+        <event-sheet>PutnameSheet.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Mouse" uid="3" />
@@ -550,6 +611,12 @@
                 <roll-off-factor>1</roll-off-factor>
             </properties>
         </global-instance>
+        <global-instance type="AJAX" uid="23" />
+        <global-instance type="Touch" uid="25">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
     </global-instances>
     <sounds-folder>
         <file name="caer.m4a" />
@@ -566,6 +633,10 @@
         <file name="gameover.ogg" />
         <file name="10.m4a" />
         <file name="10.ogg" />
+        <file name="record.m4a" />
+        <file name="record.ogg" />
+        <file name="score.m4a" />
+        <file name="score.ogg" />
     </sounds-folder>
     <music-folder />
     <files-folder>

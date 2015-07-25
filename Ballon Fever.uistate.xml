@@ -11,9 +11,13 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </configurations>
     <open-tabs>
         <layout order="0">Menu</layout>
-        <layout active="1" order="2">Game</layout>
+        <layout order="2">Game</layout>
+        <layout order="4">Score</layout>
+        <layout order="6">Putname</layout>
         <event-sheet order="1">MenuSheet</event-sheet>
         <event-sheet order="3">GameSheet</event-sheet>
+        <event-sheet active="1" order="5">Scores</event-sheet>
+        <event-sheet order="7">PutnameSheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -25,9 +29,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
         <folder expanded="1" path="layout-folder/" />
-        <folder expanded="0" path="event-folder/" />
-        <folder expanded="0" path="file-folder/" />
-        <folder expanded="0" path="sound-folder/" />
+        <folder expanded="1" path="event-folder/" />
+        <folder expanded="1" path="file-folder/" />
+        <folder expanded="1" path="sound-folder/" />
         <folder expanded="1" path="music-folder/" />
         <folder expanded="0" path="file-folder/Icons/" />
         <folder expanded="1" path="animation-folder/Menu/" />
@@ -38,5 +42,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/GameOver/" />
         <folder expanded="1" path="animation-folder/Sprite2/" />
         <folder expanded="1" path="animation-folder/Agua/" />
+        <folder expanded="1" path="animation-folder/topscores/" />
+        <folder expanded="1" path="animation-folder/congrats/" />
     </folders-expanded>
 </c2uistate>

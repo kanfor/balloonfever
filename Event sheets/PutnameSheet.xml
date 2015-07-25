@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>PutnameSheet</name>
+    <events>
+        <variable constant="0" name="Variable1" sid="7784512532158145" static="0" type="number">0</variable>
+        <event-block sid="6347895754060633">
+            <conditions>
+                <condition id="1" name="On text changed" sid="9742015710123279" type="ponernombre" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="2459425929184588" type="System">
+                    <param id="0" name="Variable">Variable1</param>
+                    <param id="1" name="Value">len(ponernombre.Text)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3511498782499452">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="6826865920822082" type="System">
+                    <param id="0" name="Variable">Variable1</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">15</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="5110624361500678" type="ponernombre">
+                    <param id="0" name="Text">left(ponernombre.Text,15)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7888349073820177">
+            <conditions>
+                <condition id="0" name="On clicked" sid="791953465711345" type="Button" />
+            </conditions>
+            <actions>
+                <action id="2" name="Post to URL" sid="1534813211842273" type="AJAX">
+                    <param id="0" name="Tag">&quot;putscore&quot;</param>
+                    <param id="1" name="URL">&quot;http://www.fotoplusestudio.com/savescores.php?name=&quot;&amp;ponernombre.Text&amp;&quot;&amp;score=&quot;&amp;Ballons</param>
+                    <param id="2" name="Data">&quot;&quot;</param>
+                    <param id="3" name="Method">&quot;POST&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8070227384450338">
+            <conditions>
+                <condition id="0" name="On completed" sid="6590883487148617" type="AJAX">
+                    <param id="0" name="Tag">&quot;putscore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="6989273147936148" type="System">
+                    <param id="0" name="Layout">Score</param>
+                </action>
+                <action id="33" name="Stop all" sid="7057002540477553" type="Audio" />
+            </actions>
+        </event-block>
+        <event-block sid="1347715133725711">
+            <conditions>
+                <condition id="1" name="On error" sid="1427647645727796" type="AJAX">
+                    <param id="0" name="Tag">&quot;putscore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="594994317226672" type="System">
+                    <param id="0" name="Layout">Menu</param>
+                </action>
+                <action id="33" name="Stop all" sid="3164593041613343" type="Audio" />
+            </actions>
+        </event-block>
+        <event-block sid="2183179442564495">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5296983164608536" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="711133200373943" type="Audio">
+                    <param id="0" name="Audio file">record</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -3,12 +3,37 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>MenuSheet</name>
     <events>
+        <variable constant="0" name="PuntuacionMin" sid="6313412209121301" static="0" type="number">0</variable>
+        <event-block sid="2568044325461096">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5847976578979536" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Request URL" sid="1708755380203806" type="AJAX">
+                    <param id="0" name="Tag">&quot;getscores&quot;</param>
+                    <param id="1" name="URL">&quot;http://www.fotoplusestudio.com/getscores.php&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9892071045745109">
+            <conditions>
+                <condition id="0" name="On completed" sid="8734493294613912" type="AJAX">
+                    <param id="0" name="Tag">&quot;getscores&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="9337116792586879" type="System">
+                    <param id="0" name="Variable">PuntuacionMin</param>
+                    <param id="1" name="Value">tokenat(Ajax.LastData, 9, &quot;|&quot;)</param>
+                </action>
+                <action id="0" name="Set text" sid="4358769064884925" type="bestplayer">
+                    <param id="0" name="Text">&quot;BEST PLAYER IS &quot;&amp;tokenat(Ajax.LastData,0,&quot;|&quot;)&amp;&quot; WITH &quot;&amp;tokenat(Ajax.LastData,1,&quot;|&quot;)&amp;&quot; BALLOONS&quot;</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="9836565486182185">
             <conditions>
-                <condition id="0" name="On click" sid="3393193286333413" type="Mouse">
-                    <param id="0" name="Mouse button">0</param>
-                    <param id="1" name="Click type">0</param>
-                </condition>
+                <condition id="1" name="On any touch end" sid="61496554261468" type="Touch" />
             </conditions>
             <actions>
                 <action id="-2" name="Go to layout" sid="1014439018782739" type="System">
@@ -16,14 +41,6 @@
                 </action>
                 <action id="33" name="Stop all" sid="6239350490418947" type="Audio" />
             </actions>
-        </event-block>
-        <event-block sid="1000504240864589">
-            <conditions>
-                <condition id="8" name="On mouse wheel" sid="8653351096640519" type="Mouse">
-                    <param id="0" name="Direction">0</param>
-                </condition>
-            </conditions>
-            <actions />
         </event-block>
         <event-block sid="6365139151947726">
             <conditions>
@@ -35,6 +52,33 @@
                     <param id="2" name="Loop">1</param>
                     <param id="3" name="Volume">0</param>
                     <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8228021571835655">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="8463029252237768" type="bestplayer">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="X co-ordinate">-bestplayer.Width</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" sid="3185868454949778" type="bestplayer">
+                    <param id="0" name="Angle">180</param>
+                    <param id="1" name="Distance">100 * dt</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5400440675831875">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="6124426189278173" type="bestplayer">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">-bestplayer.Width</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="6242291485016505" type="bestplayer">
+                    <param id="0" name="X">400</param>
                 </action>
             </actions>
         </event-block>

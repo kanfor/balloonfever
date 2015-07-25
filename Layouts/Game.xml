@@ -342,8 +342,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>346.789611816</x>
-                        <y>-26.789646149</y>
+                        <x>347.302612305</x>
+                        <y>-26.276439667</y>
                         <z>0</z>
                         <width>51.17074585</width>
                         <height>21.223724365</height>
@@ -401,11 +401,11 @@
                 </instance>
                 <instance type="SpriteFont" uid="18">
                     <properties>
-                        <character-width>16</character-width>
-                        <character-height>16</character-height>
+                        <character-width>8</character-width>
+                        <character-height>8</character-height>
                         <character-set>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-_~#&quot;&apos;&amp;()[]|`\/@°+=*$£€&lt;&gt;</character-set>
                         <text>Balloons:</text>
-                        <scale>0.5</scale>
+                        <scale>1</scale>
                         <initial-visibility>Visible</initial-visibility>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>

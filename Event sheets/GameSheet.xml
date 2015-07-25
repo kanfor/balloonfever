@@ -86,7 +86,7 @@
                         </event-block>
                         <event-block sid="8010374641223031">
                             <conditions>
-                                <condition id="1" name="On any click" sid="8818273238560361" type="Mouse" />
+                                <condition id="1" name="On any touch end" sid="7747671311577993" type="Touch" />
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="1141434844283309" type="System">
@@ -425,10 +425,7 @@
                                     <sub-events>
                                         <event-block sid="6178400450416288">
                                             <conditions>
-                                                <condition id="0" name="On click" sid="1513717481537593" type="Mouse">
-                                                    <param id="0" name="Mouse button">0</param>
-                                                    <param id="1" name="Click type">0</param>
-                                                </condition>
+                                                <condition id="1" name="On any touch end" sid="4114884499231532" type="Touch" />
                                             </conditions>
                                             <actions>
                                                 <action behavior="Physics" id="0" name="Apply force" sid="7063723060650277" type="Iwata">
@@ -691,22 +688,51 @@
                                 </event-block>
                                 <event-block sid="5295122212189473">
                                     <conditions>
-                                        <condition id="0" name="On click" sid="4860110418428443" type="Mouse">
-                                            <param id="0" name="Mouse button">0</param>
-                                            <param id="1" name="Click type">0</param>
-                                        </condition>
+                                        <condition id="1" name="On any touch end" sid="5728553737709869" type="Touch" />
                                         <condition id="-8" name="Is boolean instance variable set" sid="50014606961957" type="Iwata">
                                             <param id="0" name="Instance variable">BajoElAgua</param>
                                         </condition>
                                         <condition id="5" inverted="1" name="Is tag playing" sid="1243289008660588" type="Audio">
                                             <param id="0" name="Tag">&quot;caer&quot;</param>
                                         </condition>
+                                        <condition id="5" inverted="1" name="Is tag playing" sid="7838373992468975" type="Audio">
+                                            <param id="0" name="Tag">&quot;gameover&quot;</param>
+                                        </condition>
+                                        <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="7662959963878238" type="SpriteFont" />
                                     </conditions>
-                                    <actions>
-                                        <action id="-2" name="Go to layout" sid="6658239453880708" type="System">
-                                            <param id="0" name="Layout">Menu</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="5569015427963599">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="2220500971680838" type="System">
+                                                    <param id="0" name="Variable">Ballons</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Value">PuntuacionMin</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-2" name="Go to layout" sid="2001220152827202" type="System">
+                                                    <param id="0" name="Layout">Putname</param>
+                                                </action>
+                                                <action id="33" name="Stop all" sid="1800062263807282" type="Audio" />
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="6993879293094376">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="7790842576037062" type="System">
+                                                    <param id="0" name="Variable">Ballons</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Value">PuntuacionMin</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-2" name="Go to layout" sid="7799908282464036" type="System">
+                                                    <param id="0" name="Layout">Score</param>
+                                                </action>
+                                                <action id="33" name="Stop all" sid="1330401499495379" type="Audio" />
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-group>
